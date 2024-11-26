@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platos</title>
+    <style>
+        /* General Styles */
+        body {
+            background-color: #FFEDD5; /* Fondo naranja claro */
+            color: #4B2800; /* Texto marrón oscuro */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #8C4C00; /* Naranja más oscuro */
+            margin-top: 1em;
+        }
+
+        .contenedor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 3em auto;
+            padding: 2em;
+            background-color: #FFF3E0; /* Fondo de tarjeta */
+            border: 2px solid #FFA726; /* Borde naranja */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+
+        th, td {
+            padding: 0.8em;
+            text-align: center;
+            border: 1px solid #FFA726; /* Bordes naranjas */
+        }
+
+        th {
+            background-color: #FFB74D; /* Encabezados más oscuros */
+            color: #4B2800;
+        }
+
+        tr:nth-child(even) {
+            background-color: #FFECB3; /* Filas alternas */
+        }
+
+        /* Button for Navigation */
+        .btn {
+            display: inline-block;
+            margin-top: 1.5em;
+            padding: 0.8em 1.5em;
+            color: #FFF;
+            background-color: #FFA726; /* Naranja */
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #FF9800; /* Naranja más oscuro */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Platos</h1>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+            </tr>
+            {% for plato in platos %}
+            <tr>
+                <td>{{ plato[1] }}</td>
+                <td>{{ plato[2] }}$</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('pedidos') }}" class="btn">Pedidos</a>
+    </div>
+</body>
+</html>

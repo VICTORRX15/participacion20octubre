@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Pedido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff7eb3, #6eb5ff, #81ffef);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .contenedor {
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 2em;
+            text-align: center;
+            width: 400px;
+            animation: color-change 10s infinite;
+        }
+
+        @keyframes color-change {
+            0% { border-color: #ff7eb3; }
+            33% { border-color: #6eb5ff; }
+            66% { border-color: #81ffef; }
+            100% { border-color: #ff7eb3; }
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #444;
+            margin-bottom: 1em;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+
+        select, input[type="number"] {
+            padding: 0.8em;
+            font-size: 1em;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        select:focus, input[type="number"]:focus {
+            border-color: #6eb5ff;
+            box-shadow: 0 0 5px #6eb5ff;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(90deg, #ff7eb3, #6eb5ff, #81ffef);
+            color: white;
+            padding: 0.8em;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #6eb5ff;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff7eb3;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Agregar Pedido</h1>
+        <form method="POST">
+            <label for="plato_id">Plato:</label>
+            <select name="plato_id" id="plato_id">
+                {% for plato in platos %}
+                    <option value="{{ plato[0] }}">{{ plato[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="mesa_id">Mesa:</label>
+            <select name="mesa_id" id="mesa_id">
+                {% for mesa in mesas %}
+                    <option value="{{ mesa[0] }}">Mesa {{ mesa[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" name="cantidad" id="cantidad" required>
+
+            <input type="submit" value="Agregar Pedido">
+        </form>
+    </div>
+</body>
+</html>
